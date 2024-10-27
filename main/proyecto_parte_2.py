@@ -146,3 +146,40 @@ plt.title('Histograma y Boxplot combinados para Total Ganancias')
 plt.show()
 
 estadisticas_descriptivas
+
+
+# Parte 5
+
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+# Scatter plot: Age vs Total Amount
+sns.scatterplot(data=df, x="Age", y="Total Amount", hue="Gender", ax=axes[0, 0], edgecolor='black')
+axes[0, 0].set_title("Age vs Total Amount")
+axes[0, 0].grid(True, linestyle='--', linewidth=0.5)
+axes[0, 0].legend(title="Gender")
+# Agregamos una leyenda con una flecha para indicar la edad mayo y el monto mas alto
+axes[0, 0].annotate('Edad mayor, mayor monto', xy=(60, 2000), xytext=(40, 2500),
+                    arrowprops=dict(facecolor='black', shrink=0.05))
+
+# Scatter plot: Quantity vs Total Amount
+sns.scatterplot(data=df, x="Quantity", y="Total Amount", hue="Product Category", ax=axes[0, 1], edgecolor='black')
+axes[0, 1].set_title("Quantity vs Total Amount")
+axes[0, 1].grid(True, linestyle='--', linewidth=0.5)
+axes[0, 1].legend(title="Product Category")
+
+# Box plot: Age distribution por Gender
+sns.boxplot(data=df, x="Gender", y="Age", ax=axes[1, 0])
+axes[1, 0].set_title("Distribucion de Edad por Genero")
+axes[1, 0].grid(True, linestyle='--', linewidth=0.5)
+
+# Box plot: Total Amount por Product Category
+sns.boxplot(data=df, x="Product Category", y="Total Amount", ax=axes[1, 1])
+axes[1, 1].set_title("Total Amount por Product Category")
+axes[1, 1].tick_params(axis='x', rotation=45)
+axes[1, 1].grid(True, linestyle='--', linewidth=0.5)
+# Agregamos una leyenda para mostrar el monto total mas alto en categoria Clothing
+axes[1, 1].annotate('Monto total mas alto', xy=(1, 2000), xytext=(0.5, 4000),
+                    arrowprops=dict(facecolor='black', shrink=0.05))
+
+plt.tight_layout()
+plt.show()
