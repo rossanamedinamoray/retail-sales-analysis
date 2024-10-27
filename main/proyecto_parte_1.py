@@ -68,5 +68,3 @@ for categoria in categoria:
     promedio_edad = np.mean(ventas_por_categoria[:, 4].astype(float))
     promedio_de_compra = np.mean(ventas_por_categoria[:, 8].astype(float))
     print(f"Promedio de edad para la categoría {categoria}: {promedio_edad} con un gasto promedio de: {promedio_de_compra}")
-
-
